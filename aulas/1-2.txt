@@ -1,0 +1,34 @@
+SETUP
+=====
+Configuração do Ambiente de Desenvolvimento
+
+Separação em "Ambientes"
+Os mais comuns são:
+- DESENVOLVIMENTO *
+- PRODUÇÃO (IMPLANTADO)
+- TESTES/HOMOLOGAÇÃO
+
+Softwares necessários: WAMP
+Configuração necessária: alteração do php.ini, procurar por charset:utf-8 e remover o ;
+
+Verificar o PHPMyAdmin está funcionando
+---------------------------------------
+Ir neste endereço: http://localhost/phpmyadmin
+
+
+Configuração do Notepad++
+-------------------------
+Recomenda-se um plugin chamado explorer
+Em Configurações->Preferências alterar em "tab" para substituir
+tabs por espaços.
+
+Iniciando um projeto
+--------------------
+Raramente Desenvolvedores Web (principalmente) iniciam um projeto
+do zero. Normalmente se parte de um "modelo". A recomendação
+é usar o HTML5 Boilerplate. Pode ser baixado aqui:
+https://html5boilerplate.com/
+
+
+
+

@@ -1,0 +1,7 @@
+Database Schema e Seed
+======================
+Estrutura (schema) do "banco" e como deixar dados de teste (seed).
+
+Os profissionais criam scripts para o banco. Normalmente
+são chamados de schema.sql. Nele consta a estrutura (schema)
+e dados de teste (seed) para as tabelas.
