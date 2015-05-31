@@ -1,9 +1,13 @@
+<?php 
+include_once('lib/banco.php'); 
+?>
+
 <!doctype html>
 <html class="no-js" lang="">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title></title>
+        <title>Lista de Contatos</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -19,31 +23,37 @@
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
-        <!-- Add your site or application content here -->
-        <h1>Abrindo contato #1</h1>
+        <h1>Novo Contato</h1>
+        
+        <form method='post'>
+          <label for='nome'>Nome:</label>
+          <input type='text' id='nome' name='nome' required/>
+          <input type='tel' id='telefone' name='telefone'/>
+          <input type='submit' value='Adicionar'/>
+        </form>
         
         <?php
-          $conexao = new mysqli('localhost','root','','agenda');
-          $conexao->set_charset('utf8');
-          
-          $sql = 'SELECT * FROM contatos';
-          
-          $resultado = $conexao->query($sql);
-          
-          //while ($registro = $resultado->fetch_assoc()) {
-          //  echo var_dump($registro['nome']) . "<br>";
-          //}
-          
-          //$resultado->data_seek(1);
-          $array = $resultado->fetch_all(MYSQLI_ASSOC);
-          
-          echo var_dump($array);
-        
+          if ($_SERVER['REQUEST_METHOD'] === 'POST') {    
+            if (preg_match("/[0-9]{8}/", $_POST['telefone'])) {
+                echo 'ok';
+            } else {
+                echo 'nao';
+            }
+            if (strlen($_POST['nome']) < 5) {
+              echo "ERRO: O nome {$_POST['nome']} é muito curto, necessário pelo menos 5 caracteres";
+            } else {
+              $sql = 'INSERT INTO contatos (nome) VALUES (?)';            
+              $comando = $conexao->prepare($sql);
+              $comando->bind_param('s', $_POST['nome']);
+              $comando->execute();
+              //header('location: contato_lista.php');
+            }
+          }
         ?>
-        
+
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.3.min.js"><\/script>')</script>
         <script src="js/plugins.js"></script>
-        <script src="js/main.js"></script>        
+        <script src="js/main.js"></script>
     </body>
 </html>

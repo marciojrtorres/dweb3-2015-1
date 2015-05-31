@@ -1,3 +1,10 @@
+<?php 
+include_once('lib/banco.php'); 
+$resultado = $conexao->query('select * from contatos');
+$contatos = $resultado->fetch_all(MYSQLI_ASSOC);
+$conexao->close();
+?>
+
 <!doctype html>
 <html class="no-js" lang="">
     <head>
@@ -21,29 +28,15 @@
 
         <h1>Lista de Contatos</h1>
         
-        <?php
-        $conexao = new mysqli('localhost', 'root', '', 'agenda');
-        $conexao->set_charset('utf8');
+        Foram encontrados <?= count($contatos) ?> registros <br><br>
         
-        if ($conexao->connect_error) {
-          die('conexao falhou');
-        }
+        <?php foreach($contatos as $contato): ?>
         
-        $sql = 'SELECT * FROM contatos';
+          <?= $contato['nome'] ?> <br>
         
-        // "debugar"
-        // echo var_dump($sql);
+        <?php endforeach ?>
         
-        $resultado = $conexao->query($sql);
-        
-        echo "Foram encontrados {$resultado->num_rows} registros <br><br>";
-        
-        while ($contato = $resultado->fetch_assoc()) {
-          echo "{$contato['id_contato']} {$contato['nome']} {$contato['telefone']} <br>";
-        }
-        
-        ?>
-        
+
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.3.min.js"><\/script>')</script>
         <script src="js/plugins.js"></script>

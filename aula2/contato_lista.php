@@ -18,6 +18,10 @@
         <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
+        
+        <a href="contato_novo.php">
+          Novo Contato
+        </a>
 
         <h1>Lista de Contatos</h1>
         
@@ -29,7 +33,7 @@
           die('conexao falhou');
         }
         
-        $sql = 'SELECT * FROM contatos';
+        $sql = 'SELECT * FROM contatos ORDER BY id_contato DESC';
         
         // "debugar"
         // echo var_dump($sql);
