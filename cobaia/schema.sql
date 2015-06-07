@@ -16,6 +16,15 @@ INSERT INTO contatos (nome) VALUES ('Maria');
 INSERT INTO contatos (nome, telefone) VALUES ('João', '66992277');
 INSERT INTO contatos (nome, telefone) VALUES ('Fulano', '32124567');
 
+-- genero: m ou f grupo: (a)migos (f)amilia (c)onhecidos
+ALTER TABLE contatos 
+ADD COLUMN (genero CHAR(1), grupo INTEGER(1));
+
+INSERT INTO contatos (nome, telefone, genero, grupo)
+VALUES ('Manoel', '86223344', 'm', 0);
+
+INSERT INTO contatos (nome, telefone, genero, grupo)
+VALUES ('Manoela', '1223344', 'a', 1);
 
 
 
