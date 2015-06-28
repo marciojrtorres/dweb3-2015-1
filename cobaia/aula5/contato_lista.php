@@ -45,7 +45,7 @@ $grupos[''] = 'Sem grupo';
       <td><?= $generos[$contato['genero']] ?></td>
       <td><?= $grupos[$contato['grupo']] ?></td>
       <td>        
-        <a href='contato_edita.php?id=<?= $contato['id_contato'] ?>'>
+        <a href='contato_edita.php'>
           Edita
         </a>
         &nbsp;

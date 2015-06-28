@@ -2,7 +2,25 @@
 
 <?php include('_conexao.php'); ?>
 
-<h1>Novo Contato</h1>
+<?php
+
+$id = $_REQUEST['id'];
+$nome = @$_REQUEST['nome'];
+$telefone = @$_REQUEST['telefone'];
+$genero = @$_REQUEST['genero'];
+$grupo = @$_REQUEST['grupo'];
+
+if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+  $sql = 'SELECT * FROM contatos WHERE id_contato = ?';
+  $comando = $conexao->prepare($sql);
+  $comando->bind_param('i', $id);
+  $comando->execute();
+  $comando->bind_result($id, $nome, $telefone, $genero, $grupo);
+  $comando->fetch();
+}
+?>
+
+<h1>Edita Contato <?= $nome ?></h1>
 
 <?php include('_contato_form.php'); ?>
 
@@ -26,11 +44,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
        
     
     // SQL INJECTION
-    $sql = 'INSERT INTO contatos (nome, telefone, genero, grupo) VALUES (?, ?, ?, ?)';
+    $sql = 'UPDATE contatos SET nome=?, telefone=?, genero=?, grupo=? WHERE id_contato = ?';
     
     $comando = $conexao->prepare($sql);
     
-    $comando->bind_param('sssi', $nome, $telefone, $genero, $grupo);
+    $comando->bind_param('sssii', $nome, $telefone, $genero, $grupo, $id);
     
     $comando->execute();
     
