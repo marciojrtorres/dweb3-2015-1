@@ -1,0 +1,17 @@
+Aula #5: LOGIN
+==============
+Também conhecido como logon ou simplesmente entrar/registrar-se
+no sistema. Geralmente se dá por credenciais conhecidas como:
+usuário e senha. Existem outras opções de login, como biométrico
+por exemplo. Especificamente para web, ele pode ser terceirizado, por
+exemplo, fazendo login com uma conta Google/Facebook.
+
+Para esta aula:
+- criar uma tabela
+- criar um novo sistema (webapp, rede social)
+- verificar o login (rejeitar usuários não cadastrados)
+- implementar o login (fazer o usuário entrar)
+- implementar o cadastro do usuário
+
+Novo sistema: login, relacionamentos, ações além do crud, paginação,
+pesquisa ... 

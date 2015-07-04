@@ -1,0 +1,19 @@
+Até agora vimos:
+- formulários
+- schema do banco
+- listagem no php
+- entrada de dados
+- validação
+---------------
+CRUD = Cadastro
+Create (insert)
+Read (select)
+Update (update)
+Delete (delete)
+---------------
+3ra aula:
+---------
+3.1 reaproveitamento de código
+3.2 campos novos e novos controles
+3.3 melhorias na listagem
+3.4 exclusão e edição
